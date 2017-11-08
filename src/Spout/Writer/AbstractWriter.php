@@ -131,7 +131,7 @@ abstract class AbstractWriter implements WriterInterface
      * @return AbstractWriter
      * @throws \Box\Spout\Common\Exception\IOException If the writer cannot be opened
      */
-    public function openToBrowser($outputFileName)
+    public function openToBrowser($outputFileName, $headers = array())
     {
         $this->outputFilePath = $this->globalFunctionsHelper->basename($outputFileName);
 
@@ -155,6 +155,11 @@ abstract class AbstractWriter implements WriterInterface
          */
         $this->globalFunctionsHelper->header('Cache-Control: max-age=0');
         $this->globalFunctionsHelper->header('Pragma: public');
+
+        //Optionally output headers requested by the user
+		foreach($headers as $header){
+			$this->globalFunctionsHelper->header($header);
+		}
 
         $this->openWriter();
         $this->isWriterOpened = true;
