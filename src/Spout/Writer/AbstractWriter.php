@@ -128,6 +128,7 @@ abstract class AbstractWriter implements WriterInterface
      *
      * @api
      * @param  string $outputFileName Name of the output file that will contain the data. If a path is passed in, only the file name will be kept
+	 * @param  array $headers Optional list of headers to add to the output
      * @return AbstractWriter
      * @throws \Box\Spout\Common\Exception\IOException If the writer cannot be opened
      */
